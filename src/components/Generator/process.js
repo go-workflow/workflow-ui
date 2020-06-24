@@ -120,10 +120,11 @@ export const deleteNode = (nodeDel, node) => {
 }
 export const findParent = (newNode, node) => {
   if (node.nodeId === newNode.prevId) {
-    if (node.childNode != null) {
+    if (node.childNode != null && node.childNode.nodeId != null) {
       node.childNode.prevId = newNode.nodeId
+      newNode.childNode = node.childNode
     }
-    newNode.childNode = node.childNode
+    // newNode.childNode = node.childNode
     node.childNode = newNode
     return
   }
