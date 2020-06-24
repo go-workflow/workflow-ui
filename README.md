@@ -73,6 +73,10 @@ npm i
 
 npm run serve
 
+### 重新build
+
+npm run build
+
 ### 重新发布
 
 1. package.json 更新版本号
