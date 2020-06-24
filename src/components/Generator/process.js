@@ -44,6 +44,10 @@ export const checkData = (data) => {
   }
   return errors
 }
+/**
+ * @param {*} resultArr 为结果节点数组
+ * @param {*} data 为节点
+ */
 export const iteratorData = (resultArr, data) => {
   var arr = []
   arr.push(data)
@@ -77,8 +81,6 @@ export const findIndex = (nodeId, arr) => {
   return position
 }
 export const addNode = (node, arr) => {
-  console.log('process 新节点:')
-  console.log(node)
   var index = findIndex(node.prevId, arr)
   if (index != null) {
     arr.splice(index + 1, 0, node)
@@ -90,32 +92,40 @@ export const addNewNode = (newNode, node, arr) => {
 }
 /**
  *
- * @param {*} node 为完整节点
+ * @param {*} node 为完整节点信息
  * @param {*} nodeDel 为删除节点
  * @param {*} arr 为节点node遍历后数组
  */
 export const delNode = (nodeDel, node, arr) => {
   // console.log(nodeDel)
+  // 从遍历后数组中删除节点
   var index = findIndex(nodeDel.nodeId, arr)
-  if (index != null) {
-    arr.splice(index, 1)
-  }
+  arr.splice(index, 1)
   deleteNode(nodeDel, node)
 }
+// 删除节点
+/**
+ * @param {*} nodeDel 为需要删除的节点
+ * @param {*} node 为完整的节点
+ */
 export const deleteNode = (nodeDel, node) => {
-  if (node.nodeId === nodeDel.prevId) {
-    // console.log(node)
-    if (nodeDel.childNode != null) {
-      nodeDel.childNode.prevId = node.nodeId
-      nodeDel = nodeDel.childNode
-    } else {
-      nodeDel = null
-    }
-    node.childNode = nodeDel
+  var temp = node
+  // 没有子节点
+  if (nodeDel.childNode == null) {
+    nodeDel = null
     return
   }
-  if (node.childNode != null) {
-    return deleteNode(nodeDel, node.childNode)
+  // 找到删除节点的父节点
+  while (temp != null) {
+    // 判断是否是删除节点的父节点
+    if (temp.nodeId === nodeDel.prevId) {
+      // 将删除节点的子节点指向父节点
+      nodeDel.childNode.prevId = node.nodeId
+      node.childNode = nodeDel.childNode
+      return
+    }
+    // 循环结束
+    if (temp.childNode != null) temp = temp.childNode
   }
 }
 export const findParent = (newNode, node) => {

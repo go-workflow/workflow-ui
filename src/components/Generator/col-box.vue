@@ -1,5 +1,8 @@
 <template>
-  <div class="col-box">
+  <div
+    :key="key"
+    class="col-box"
+  >
     <div
       v-if="pos == 0"
       class="top-left-cover-line"
@@ -47,6 +50,8 @@ export default {
   },
   data: () => ({
     items: [],
+    // 用于强制刷新
+    key: 0,
     node1: null
   }),
   watch: {
@@ -73,11 +78,12 @@ export default {
       iteratorData(this.items, data)
     },
     addnode (node) {
-      // console.log(this.node1)
       addNewNode(node, this.node1, this.items)
+      this.key++
     },
     delNode (node) {
       delNode(node, this.node1, this.items)
+      this.key++
     },
     delConditionNode () {
       this.$emit('delConditionNode')

@@ -40,8 +40,8 @@ export default {
   },
   methods: {
     addnode (node) {
-      console.log('node 新节点:')
-      console.log(node)
+      // console.log('node 新节点:')
+      // console.log(node)
       this.$emit('addnode', node)
     },
     delNode () {

@@ -45,8 +45,8 @@ export default {
       this.dialog = true
     },
     addnode (node) {
-      console.log('add-node-btn 新添加的节点:')
-      console.log(node)
+      // console.log('add-node-btn 新添加的节点:')
+      // console.log(node)
       this.$emit('addnode', node)
     }
   }

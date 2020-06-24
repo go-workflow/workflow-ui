@@ -58,6 +58,7 @@
         <div class="ie-polyfill-container">
           <div
             id="box-scale"
+            :key="key"
             class="box-scale"
             style="transform: scale(1); transform-origin: 50% 0px 0px;"
           >
@@ -106,6 +107,7 @@ export default {
   },
   data: () => ({
     items: [],
+    key: 0,
     errorsModal: false,
     errors: [],
     viewModal: false,
@@ -150,10 +152,17 @@ export default {
       iteratorData(this.items, data)
     },
     addnode (node) {
+      // console.log('添加节点:' + node.nodeId)
       addNewNode(node, this.data1.node, this.items)
+      this.key++
     },
     delNode (node) {
+      // console.log('删除节点:' + node.properties.actionerRules[0].labelNames)
       delNode(node, this.data1.node, this.items)
+      // this.iteratorData(this.data1.node)
+      // console.log(this.data1.node)
+      // console.log(this.items)
+      this.key++
     },
     save () {
       var errors = checkData(this.data1.node)
@@ -163,6 +172,7 @@ export default {
         return
       }
       this.$emit('ok', this.data1)
+      console.log(this.data1)
     },
     preview () {
       var errors = checkData(this.data1.node)

@@ -63,8 +63,8 @@ export default {
   },
   methods: {
     addnode (node) {
-      console.log('condition-node-box 新节点:')
-      console.log(node)
+      // console.log('condition-node-box 新节点:')
+      // console.log(node)
       this.$emit('addnode', node)
     },
     delConditionNode () {
