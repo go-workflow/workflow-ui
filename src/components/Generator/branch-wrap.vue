@@ -61,6 +61,8 @@ export default {
       return num + 1
     },
     addnode (node) {
+      console.log('branch-wrap 新节点:')
+      console.log(node)
       this.$emit('addnode', node)
     },
     delConditionNode (item) {

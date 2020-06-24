@@ -6,7 +6,7 @@ module.exports = {
   productionSourceMap: true,
   pages: {
     index: {
-      entry: 'src/index.js',
+      entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html'
     }

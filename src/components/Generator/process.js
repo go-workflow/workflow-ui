@@ -77,6 +77,8 @@ export const findIndex = (nodeId, arr) => {
   return position
 }
 export const addNode = (node, arr) => {
+  console.log('新节点:')
+  console.log(node)
   var index = findIndex(node.prevId, arr)
   if (index != null) {
     arr.splice(index + 1, 0, node)

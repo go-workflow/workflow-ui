@@ -30,8 +30,7 @@
     "material components",
     "vue framework"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "core-js": "^3.4.4",
     "node-sass": "^4.13.1",
