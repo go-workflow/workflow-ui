@@ -1,9 +1,9 @@
 {
   "name": "workflow-ui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/go-workflow/go-workflow-UI.git"
+    "url": "git+https://https://github.com/go-workflow/workflow-ui"
   },
   "main": "lib/workflow-ui.common.js",
   "files": [

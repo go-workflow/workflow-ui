@@ -73,6 +73,21 @@ npm i
 
 npm run serve
 
+### 重新发布
+
+1. package.json 更新版本号
+
+2. 打开 vue.config.js
+
+```
+entry: 'src/index.js',
+```
+
+3. 发布到npm
+
+npm publish
+
+
 ### 作者
 
 邮箱：181457121@qq.com
