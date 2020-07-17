@@ -51,16 +51,24 @@
         class="dingflow-design"
       >
         <div class="zoom">
-          <div class="zoom-out" />
-          <span>100%</span>
-          <div class="zoom-in" />
+          <div
+            class="zoom-out"
+            @click="zoom(-10)"
+          />
+          <span>{{ zoomValue||100 }}%</span>
+          <div
+            class="zoom-in"
+            @click="zoom(10)"
+          />
         </div>
-        <div class="ie-polyfill-container">
+        <div
+          class="ie-polyfill-container"
+        >
           <div
             id="box-scale"
             :key="key"
             class="box-scale"
-            style="transform: scale(1); transform-origin: 50% 0px 0px;"
+            :style="`transform: ${zoomStyle.transform}; transform-origin: 50% 0px 0px;`"
           >
             <Node
               v-for="(item, index) in items"
@@ -111,6 +119,10 @@ export default {
     errorsModal: false,
     errors: [],
     viewModal: false,
+    zoomValue: 100,
+    zoomStyle: {
+      transform: 1
+    },
     data1: {
       title: '请假',
       node: {
@@ -182,6 +194,14 @@ export default {
         return
       }
       this.viewModal = true
+    },
+    // 缩放
+    zoom (v) {
+      let zv = (this.zoomValue || 100) + v
+      if (zv < 20) zv = 20
+      else if (zv > 200) zv = 200
+      this.zoomValue = zv
+      this.zoomStyle = { transform: `scale(${zv / 100})` }
     }
   }
 }
