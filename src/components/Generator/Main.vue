@@ -133,7 +133,6 @@ export default {
     if (this.data && this.data.node) {
       this.data1 = this.data
     }
-    console.log(this.data1)
     if (!this.data1.node) {
       this.initialNode()
     }
@@ -157,12 +156,12 @@ export default {
       this.key++
     },
     delNode (node) {
-      // console.log('删除节点:' + node.properties.actionerRules[0].labelNames)
+      console.log('删除节点:' + node.properties.actionerRules[0].labelNames)
       delNode(node, this.data1.node, this.items)
+      this.key++
       // this.iteratorData(this.data1.node)
       // console.log(this.data1.node)
       // console.log(this.items)
-      this.key++
     },
     save () {
       var errors = checkData(this.data1.node)

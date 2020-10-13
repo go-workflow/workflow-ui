@@ -100,6 +100,7 @@ export const delNode = (nodeDel, node, arr) => {
   // console.log(nodeDel)
   // 从遍历后数组中删除节点
   var index = findIndex(nodeDel.nodeId, arr)
+  console.log(index)
   arr.splice(index, 1)
   deleteNode(nodeDel, node)
 }
@@ -110,18 +111,16 @@ export const delNode = (nodeDel, node, arr) => {
  */
 export const deleteNode = (nodeDel, node) => {
   var temp = node
-  // 没有子节点
-  if (nodeDel.childNode == null) {
-    nodeDel = null
-    return
-  }
   // 找到删除节点的父节点
   while (temp != null) {
-    // 判断是否是删除节点的父节点
     if (temp.nodeId === nodeDel.prevId) {
       // 将删除节点的子节点指向父节点
-      nodeDel.childNode.prevId = node.nodeId
-      node.childNode = nodeDel.childNode
+      if (nodeDel.childNode == null) {
+        temp.childNode = null
+        return
+      }
+      nodeDel.childNode.prevId = temp.nodeId
+      temp.childNode = nodeDel.childNode
       return
     }
     // 循环结束
